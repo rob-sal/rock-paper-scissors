@@ -15,10 +15,8 @@ function getComputerChoice () {
     return computerSelection;
 }
 
-//lets declare the variables
 let info = document.querySelector('.info');
 let results = document.querySelector('.results');
-
 
 let playerScore = document.querySelector('.playerScore');
 let playerSelection = document.querySelector('.playerSelection');
@@ -94,5 +92,29 @@ function playRound (playerChoice, computerChoice) {
             } 
             break;
     }
+    info.style.cssText = ("");
+    results.style.cssText = ("");
+    checkWinner();
+}
+
+function checkWinner () {
+    if (parseInt(playerScore.textContent) === 5 ) {
+        results.textContent = ("YOU WIN!! YOU SCORED 5 POINTS 👍");
+        restart();
+    }
+    if (parseInt(computerScore.textContent) === 5 ) {
+        results.textContent = ("YOU LOSE!! COMPUTER SCORED 5 POINTS 👎");
+        restart ();
+    }
+}
+
+function restart () {
+    playerSelection.textContent = "🥊";
+    computerSelection.textContent = "🥊";
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+    info.textContent = ("LET'S PLAY AGAIN! 💪");
+    info.style.cssText = ("border-radius: 25px; background-color: midnightblue");
+    results.style.cssText = ("border-radius: 25px; background-color: darkslategrey");
 
 }

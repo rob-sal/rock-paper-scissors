@@ -28,26 +28,25 @@ body {
     flex: 1;
     gap: 5px;
     border-radius: 40px;
-    padding: 50px;
+    padding: 40px;
 }
 
-
-
-.results,
-.info
+.results, .info
 {
     display: flex;
     flex-basis: 50px;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 35px;
     justify-content: center;
 }
 
 .score {
     color: rgb(176, 171, 254);
-    font-size: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 25px;
     display: flex;
-    gap: 200px;
+    gap: 50px;
     font-weight: bold;
     justify-content: space-evenly;
     flex: 2;
@@ -61,7 +60,7 @@ body {
 }
 
 .computerSelection, .playerSelection {
-    font-size: 35px;
+    font-size: 55px;
 }
 
 .game .buttons {
@@ -75,11 +74,10 @@ body {
 .btn {
     width: 180px;
     height: 180px;
+    border: 8px solid rgb(22, 22, 22);
     border-radius: 100px;
     font-size: 100px;
 }
-
-
 
 .footer {
     font-size: 16px;
