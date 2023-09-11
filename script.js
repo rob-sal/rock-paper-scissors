@@ -1,9 +1,7 @@
-//
-//declare a function to get a random choice from the computer
 function getComputerChoice () {
     let randomNum = Math.floor(Math.random()*3);  //get random number
     let computerSelection;
-    switch (randomNum) {   //applying a value depending of random number
+    switch (randomNum) {   
         case 0: 
             computerSelection = "ROCK";
             break;
@@ -17,80 +15,84 @@ function getComputerChoice () {
     return computerSelection;
 }
 
-//function asking user to insert an option 
-function userSelection () {
-    let selection = window.prompt("Let's play, what do you choose?");
-    selection = selection.toUpperCase();
-    return selection;
+//lets declare the variables
+let info = document.querySelector('.info');
+let results = document.querySelector('.results');
+
+
+let playerScore = document.querySelector('.playerScore');
+let playerSelection = document.querySelector('.playerSelection');
+let computerScore = document.querySelector('.computerScore');
+let computerSelection = document.querySelector('.computerSelection');
+
+let btnRock = document.querySelector('#rock');
+let btnPaper = document.querySelector('#paper');
+let btnScissor = document.querySelector('#scissor');
+
+btnPaper.addEventListener('click', () => btnClick('PAPER'));
+btnRock.addEventListener('click', () => btnClick('ROCK'));
+btnScissor.addEventListener('click', () => btnClick('SCISSORS'));
+
+function btnClick (selection) {
+    playRound (selection, getComputerChoice());
 }
 
-//compare both options to see who is the winner
-function playRound (playerSelection, computerSelection) { 
-    playerSelection = userSelection(); 
-    computerSelection = getComputerChoice();
-    console.log("User input is: " + playerSelection);
-    console.log("Computer selection is: "+ computerSelection);
-    let gameState;
-    switch (playerSelection) {
+function playRound (playerChoice, computerChoice) { 
+    switch (playerChoice) {
         case "PAPER":
-            if (computerSelection === "PAPER") {
-                console.log("Nobody won, good luck next time!!");
-                return gameState = "tie"
-            } else if (computerSelection === "ROCK") {
-                console.log("Paper beats rock, you WON!!");
-                return gameState = "won";
-            } else if (computerSelection === "SCISSORS") {
-                console.log("Scissors beats paper, you LOSE!!");
-                return gameState = "lose";
-            } 
-            break;
-        case "ROCK":
-            if (computerSelection === "PAPER") {
-                console.log("Paper beats rock, you LOSE!!");
-                return gameState = "lose";
-            } else if (computerSelection === "ROCK") {
-                console.log("Nobody won, good luck next time!!");
-                return gameState = "tie"
-            } else if (computerSelection === "SCISSORS") {
-                console.log("Rock beats scissors, you WON!!");
-                return gameState = "won";
+            playerSelection.textContent = ("✋");
+            if (computerChoice === "ROCK") {
+                info.textContent = ("You WON!!");
+                results.textContent = ("PAPER BEATS ROCK");
+                computerSelection.textContent = ("👊");
+                playerScore.textContent = parseInt(playerScore.textContent) +1 ;
+            } else if (computerChoice === "SCISSORS") {
+                info.textContent = ("You LOSE!!");
+                results.textContent = ("SCISSORS BEATS PAPER");
+                computerSelection.textContent = ("✌");
+                computerScore.textContent = parseInt(computerScore.textContent) +1;
+            } else {
+                info.textContent = ("You Tied");
+                results.textContent = ("Nobody won, good luck next time!!");
+                computerSelection.textContent = ("✋");
             }
             break;
+        case "ROCK":
+            playerSelection.textContent = ("👊");
+            if (computerChoice === "SCISSORS") {
+                info.textContent = ("You WON!!");
+                results.textContent = ("ROCK BEATS SCISSORS");
+                computerSelection.textContent = ("✌");
+                playerScore.textContent = parseInt(playerScore.textContent) +1 ;
+            } else if (computerChoice === "PAPER") {
+                info.textContent = ("You LOSE!!");
+                results.textContent = ("PAPER BEATS ROCK");
+                computerSelection.textContent = ("✋");
+                computerScore.textContent = parseInt(computerScore.textContent) +1;
+            } else {
+                info.textContent = ("You Tied");
+                results.textContent = ("Nobody won, good luck next time!!");
+                computerSelection.textContent = ("👊");
+            } 
+            break;
         case "SCISSORS":
+            playerSelection.textContent = ("✌");
             if (computerSelection === "PAPER") {
-                console.log("Scissors beats paper, you WON!!");
-                return gameState = "won";
+                info.textContent = ("You WON!!");
+                results.textContent = ("SCISSORS BEATS PAPER");
+                computerSelection.textContent = ("✋");
+                playerScore.textContent = parseInt(playerScore.textContent) +1 ;
             } else if (computerSelection === "ROCK") {
-                console.log("Rock beats scissors, you LOSE!!");
-                return gameState = "lose";
-            } else if (computerSelection === "SCISSORS") {
-                console.log("Nobody won, good luck next time!!");
-                return gameState = "tie"
+                info.textContent = ("You LOSE!!");
+                results.textContent = ("ROCK BEATS SCISSORS");
+                computerSelection.textContent = ("👊");
+                computerScore.textContent = parseInt(computerScore.textContent) +1;
+            } else {
+                info.textContent = ("You Tied");
+                results.textContent = ("Nobody won, good luck next time!!");
+                computerSelection.textContent = ("✌");
             } 
             break;
     }
-}
 
-//play the game 5 times recording a score
-function game () {
-    let win = 0;
-    let lose = 0;
-    let tie = 0;
-    for (let i = 1; i <= 3; i++) {
-        console.log("Let's play!")
-        switch (playRound()) {
-            case "won":
-                win ++;
-                break;
-            case "lose":
-                lose++;
-                break;
-            case "tie":
-                tie++;
-                break;
-        }
-    }
-    console.log("You won "+ win + " times" )
-    console.log("You lost "+ lose + " times" )
-    console.log("You tied "+ tie + " times" )
 }

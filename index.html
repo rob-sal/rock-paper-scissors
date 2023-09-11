@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./script.js"></script>
+    <title>ROCK PAPER SCISSORS</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    Hello there!
+    <header class="header">ROCK, PAPER, SCISSORS?</header>
+    <div class="game">
+        <div class="info">Hello there!, Let's Play!</div>
+        <div class="results">FIRST TO SCORE 5 POINTS WINS THE GAME💪</div>
+        <div class="score">
+            <div class="player">
+                <div>Player:</div>
+                <div class="playerScore">0</div>
+                <div class="playerSelection">🤜</div>
+            </div>
+            <div class="computer">
+                <div class="computerSelection">🤛</div>
+                <div>Computer:</div>
+                <div class="computerScore">0</div>                
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="btn" id="rock">👊</button>
+            <button class="btn" id="paper">✋</button>
+            <button class="btn" id="scissor">✌</button>
+        </div>
+    </div>
+    <footer class="footer">Copyright 2023 Pelón Burrito</footer>
 </body>
 </html>
