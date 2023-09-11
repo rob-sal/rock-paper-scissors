@@ -36,6 +36,8 @@ function btnClick (selection) {
 }
 
 function playRound (playerChoice, computerChoice) { 
+    console.log(playerChoice)
+    console.log(computerChoice)
     switch (playerChoice) {
         case "PAPER":
             playerSelection.textContent = ("✋");
@@ -75,12 +77,12 @@ function playRound (playerChoice, computerChoice) {
             break;
         case "SCISSORS":
             playerSelection.textContent = ("✌");
-            if (computerSelection === "PAPER") {
+            if (computerChoice === "PAPER") {
                 info.textContent = ("You WON!!");
                 results.textContent = ("SCISSORS BEATS PAPER");
                 computerSelection.textContent = ("✋");
                 playerScore.textContent = parseInt(playerScore.textContent) +1 ;
-            } else if (computerSelection === "ROCK") {
+            } else if (computerChoice === "ROCK") {
                 info.textContent = ("You LOSE!!");
                 results.textContent = ("ROCK BEATS SCISSORS");
                 computerSelection.textContent = ("👊");
